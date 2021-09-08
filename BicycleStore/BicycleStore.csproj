@@ -16,4 +16,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bicycle.DAL\Bicycle.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
