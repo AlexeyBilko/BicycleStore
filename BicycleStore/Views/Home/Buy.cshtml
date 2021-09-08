@@ -1,0 +1,49 @@
+﻿@model BicycleStore.Models.Order
+@{ }
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order page</title>
+</head>
+<body>
+    <div>
+        <h1 style="margin-bottom: 2%">Purchase form</h1>
+        <form method="post">
+            <input class="form-control" type="hidden" value="@ViewBag.BicycleId" name="BicycleId" />
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name)
+                @Html.TextBoxFor(x => x.Name)
+                @*@Html.ValidationMessageFor(x => x.Name)*@
+                <span asp-validation-for="Name" style="color: white; margin-left: 3%; padding: 0px; border-radius: 5px; background-color: rgb(255, 53, 53);"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Surname)
+                @Html.TextBoxFor(x => x.Surname)
+                @*@Html.ValidationMessageFor(x => x.Name)*@
+                <span asp-validation-for="Surname" style="color: white; margin-left: 3%; padding: 0px; border-radius: 5px; background-color: rgb(255, 53, 53);"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.PhoneNumber)
+                @Html.TextBoxFor(x => x.PhoneNumber)
+                @*@Html.ValidationMessageFor(x => x.Name)*@
+                <span asp-validation-for="PhoneNumber" style="color: white; margin-left: 3%; padding: 0px; border-radius: 5px; background-color: rgb(255, 53, 53);"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email)
+                @Html.TextBoxFor(x => x.Email)
+                @*@Html.ValidationMessageFor(x => x.Name)*@
+                <span asp-validation-for="Email" style="color: white; margin-left: 3%; padding: 0px; border-radius: 5px; background-color: rgb(255, 53, 53);"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Postcode)
+                @Html.TextBoxFor(x => x.Postcode)
+                @*@Html.ValidationMessageFor(x => x.Name)*@
+                <span asp-validation-for="Postcode" style="color: white; margin-left: 3%; padding: 0px; border-radius: 5px; background-color: rgb(255, 53, 53);"></span>
+            </div>
+            <input type="submit" value="Send" />
+        </form>
+    </div>
+</body>
+</html>

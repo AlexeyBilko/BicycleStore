@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/Index.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <a class="redirect_tomain btn btn-primary" href="Home/Index">Go to Main Page</a>
+
+
+        <h2 style="margin-top: 3%; text-align: center">Hi, to manage the product list, please Log In</h2>
+        
+        <div class="login_main" id="loginForm">
+            <label class="form-group h5" for="login">Login: </label>
+            <input style="margin-bottom: 1% " class="form-control" type="text" id="login" />
+            <label class="form-group h5" for="password">Password: </label>
+            <input style="margin-bottom: 1% " class="form-control" type="password" id="password" />
+            <button class="btn btn-primary" id="submitLogin">Login</button>
+        </div>
+
+
+        <h1 style="margin-top: 2%; text-align: center">Bicycles list</h1>
+
+        <div id="errors" class="alert alert-danger" style="display: none;"></div>
+
+        <form class="login_main" name="carForm">
+            <input type="hidden" name="bicycleId" />
+            <div class="form-group">
+                <label for="title">Manufacturer: </label>
+                <input type="text" name="title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="model">Model: </label>
+                <input type="text" name="model" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="price">Price: </label>
+                <input type="number" name="price" class="form-control" />
+            </div>
+            <!--<div class="form-group">
+                <label for="picture">Picture: </label>
+                <input type="file" name="picture" onchange="encodeImageFileAsURL(this)" />
+            </div>-->
+            <div class="form-group">
+                <input type="file" name="picture" onchange="encodeImageFileAsURL(this)" />
+                <div id="imgTest">
+                    <img style="width:500px" id="img64"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Weight: </label>
+                <input type="number" name="weight" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="weelsradius">Weels Radius: </label>
+                <input type="number" name="weelsradius" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="brakes">Brakes: </label>
+                <input type="number" name="brakes" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="type">Type: </label>
+                <input type="text" name="type" class="form-control" />
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary">Save</button>
+        </form>
+
+        <!--<a id="savechanges" class="btn btn-primary">Save </a>-->
+
+
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Manufacturer</td>
+                    <td>Model</td>
+                    <td>Price</td>
+                    <td>Weight</td>
+                    <td>Weels Radius</td>
+                    <td>Brakes</td>
+                    <td>Type</td>
+                    <td class="text-warning">Edit</td>
+                    <td class="text-danger">Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script type="text/javascript" src="js/Index.js"></script>
+</body>
+</html>

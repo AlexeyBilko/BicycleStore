@@ -1,0 +1,39 @@
+﻿@model Bicycle
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" style="margin-top: 50px;">
+    @Html.HiddenFor(x => x.BicycleId)
+    <div>
+        @Html.LabelFor(x => x.Manufacturer)
+        @Html.TextBoxFor(x => x.Manufacturer)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Model)
+        @Html.TextBoxFor(x => x.Model)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Price)
+        @Html.TextBoxFor(x => x.Price)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Weight)
+        @Html.TextBoxFor(x => x.Weight)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.WeelsRadius)
+        @Html.TextBoxFor(x => x.WeelsRadius)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Brakes)
+        @Html.TextBoxFor(x => x.Brakes)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Type)
+        @Html.TextBoxFor(x => x.Type)
+    </div>
+    <input type="submit" value="Create" />
+</form>

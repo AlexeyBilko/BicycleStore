@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BicycleStore.Models.Bicycle>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+<h2>Hello, @User.Identity.Name</h2>
+<a href="~/Account/LogoutSystem" class="btn btn-warning">Logout</a>
+
+<h3 style="margin-top:60px; margin-bottom: 25px;">Product management</h3>
+
+<div style="margin-top: 30px; text-align: center;">
+    <a href="~/Admin/Create" class="btn btn-primary" style="width: 150px;">Add New</a>
+</div>
+
+<table class="table" style="margin-top: 30px;">
+    <thead>
+        <tr style="text-align: center;">
+            <th>Title</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Weight</th>
+            <th>Weels Radius</th>
+            <th>Brakes</th>
+            <th>Type</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+<tr style="text-align: center;">
+    <td>@car.Manufacturer</td>
+    <td>@car.Model</td>
+    <td>@car.Price</td>
+    <td>@car.Weight</td>
+    <td>@car.WeelsRadius</td>
+    <td>@car.Brakes</td>
+    <td>@car.Type</td>
+    <td><a href="~/Admin/Create/@car.BicycleId" class="btn btn-warning">Edit</a></td>
+    <td>
+        <form method="post" action="~/Admin/Delete">
+            <input type="hidden" value="@car.BicycleId" name="BicycleId" />
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+    </td>
+</tr>
+}
+    </tbody>
+</table>
+
+<div style="margin-bottom: 15px;">Page  @ViewBag.PageNumber of @ViewBag.TotalPages</div>
+<a asp-action="Index"
+   asp-route-page="@(ViewBag.PageNumber - 1)"
+   class="btn btn-outline-dark">
+    <i class="glyphicon glyphicon-chevron-left"></i>
+    Назад
+</a>
+<a style="margin-left: 10px;" asp-action="Index"
+   asp-route-page="@(ViewBag.PageNumber  + 1)"
+   class="btn btn-outline-dark">
+    Вперед
+    <i class="glyphicon glyphicon-chevron-right"></i>
+</a>
+
+<h3 style="margin-top: 60px; margin-bottom: 25px;">Users management</h3>
+<div style="margin-top: 30px; text-align: center;">
+    <a href="~/Admin/UsersManagement" class="btn btn-primary" style="width: 150px;">Manage Users</a>
+</div>
+
+<h3 style="margin-top: 60px; margin-bottom: 25px;">Roles management</h3>
+<div style="margin-top: 30px; text-align: center;">
+    <a href="~/Roles" class="btn btn-primary" style="width: 150px;">Manage Roles</a>
+</div>

@@ -1,0 +1,69 @@
+﻿<table style="margin-left: 100px;
+                  margin-bottom: 30px;
+                  font-size: 20px;
+                  font-family: sans-serif" ;
+       cellpadding='12px'>
+    <thead>
+        <tr style="text-align: center; border-bottom: solid 2px black;">
+            <th>
+                Image
+            </th>
+            <th>
+                <div id="sortbyman" @*asp-controller="Home" asp-action="BicycleList" asp-route-sortType="ManufacturerAsc"*@>Manufacturer</div>
+            </th>
+            <th>
+                <div id="sortbymodel" @*asp-controller="Home" asp-action="BicyclesList" asp-route-sortType="ModelAsc"*@>Model</div>
+            </th>
+            <th>
+                <div id="sortbyprice" @*asp-controller="Home" asp-action="BicyclesList" asp-route-sortType="PriceAsc"*@>Price</div>
+            </th>
+            <th>
+                <div id="sortbyweight" @*asp-controller="Home" asp-action="BicyclesList" asp-route-sortType="WeightAsc"*@>Weight</div>
+            </th>
+            <th>
+                <div id="sortbyweels" @*asp-controller="Home" asp-action="BicyclesList" asp-route-sortType="WeelsRadiusAsc"*@>Weels Radius</div>
+            </th>
+            <th>
+                <div id="sortbybrakes" @*asp-controller="Home" asp-action="BicyclesList" asp-route-sortType="BrakesAsc"*@>Brakes</div>
+            </th>
+            <th>
+                <div id="sortbytype" @*asp-controller="Home" asp-action="BicyclesList" asp-route-sortType="TypeAsc"*@>Type</div>
+            </th>
+            <th>
+                <form asp-controller="Home" asp-action="Index" method="get">
+                    <select name="company" asp-items="Model.Companies"></select>
+                    <input type="submit" value="Filter" />
+                </form>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bicycle in Model.Bicycles)
+        {
+<tr style="text-align: center; border-bottom: solid 1px black;">
+    <td><img style="width: 150px" src="@bicycle.PictureBase64" /></td>
+    <td>@bicycle.Manufacturer</td>
+    <td>@bicycle.Model</td>
+    <td>@bicycle.Price</td>
+    <td>@bicycle.Weight</td>
+    <td>@bicycle.WeelsRadius</td>
+    <td>@bicycle.Brakes</td>
+    <td>@bicycle.Type</td>
+    <td><a href="~/Home/Buy/@bicycle.BicycleId">Buy</a></td>
+    <td>
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+<input type="hidden" value="@bicycle.BicycleId" name="BicycleId" />
+                    @Html.Hidden("returnUrl", Context.Request.Path)
+                                        <input type="submit" value="+ Add to Cart" class="btn btn-secondary" />}
+    </td>
+</tr>
+}
+    </tbody>
+</table>
+
+<div style="visibility: hidden" id="pagenumber">@Model.PageNumber</div>
+<div style="visibility: hidden" id="totalpages">@Model.TotalPages</div>
+
+<div style="margin-left: 112px; margin-bottom: 15px;">Page @Model.PageNumber of @Model.TotalPages</div>
+@*<script type="text/javascript" src="~/js/site.js"></script>*@

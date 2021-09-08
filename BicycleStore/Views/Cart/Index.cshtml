@@ -1,0 +1,49 @@
+﻿@model BicycleStore.Models.ViewModels.CartIndexViewModel
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Cart</h1>
+<table class="table">
+    <thead>
+        <tr style="text-align:center">
+            <th>Quantity</th>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Weight</th>
+            <th>Weels Radius</th>
+            <th>Brakes</th>
+            <th>-></th>
+            <th style="color:black !important; font-style:italic">Price</th>
+            <th style="color: black !important; font-style: italic">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+<tr style="text-align:center">
+    <td>@line.Quantity</td>
+    <td>@line.Bicycle.Manufacturer</td>
+    <td>@line.Bicycle.Model</td>
+    <td>@line.Bicycle.Weight</td>
+    <td>@line.Bicycle.WeelsRadius</td>
+    <td>@line.Bicycle.Brakes</td>
+    <th>-></th>
+    <td style="font-style:italic">@line.Bicycle.Price</td>
+    <td style="font-style:italic">@(line.Quantity * line.Bicycle.Price)</td>
+</tr>
+}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total: </td>
+            <td>@Model.Cart.ComputeTotalValue()</td>
+        </tr>
+    </tfoot>
+</table>
+@*@Model.ReturnUrl*@
+<p class="btn btn-primary">
+    <a href="Home/Index" style="color: white;">Continue shopping</a>
+</p>
+<p class="btn btn-primary">
+    <a href="Home/Buy/@Model.Cart.Lines.ToList()[0].Bicycle.BicycleId" style="color: white;">Buy</a>
+</p>
+

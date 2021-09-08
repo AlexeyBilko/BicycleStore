@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BicycleStore.Models.User>
+@{
+    //ViewData["Title"] = "UsersManagement";
+}
+
+<h2>Users Management</h2>
+
+<table class="table" style="margin-top: 30px;">
+    <thead>
+        <tr style="text-align: center;">
+            <th>Email</th>
+            <th>EmailConfirmed</th>
+            <th>PhoneNumber</th>
+            <th>PhoneNumberConfirmed</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+        <tr style="text-align: center;">
+            <td>@user.Email</td>
+            <td>@user.EmailConfirmed</td>
+            <td>@user.PhoneNumber</td>
+            <td>@user.PhoneNumberConfirmed</td>
+            <td>@user.Year</td>
+            <td><a href="~/Admin/CreateUsers/@user.Id" class="btn btn-warning">Edit</a></td>
+            <td><a asp-controller="Roles" asp-action="Edit" asp-route-userId="@user.Id" class="btn btn-primary">Role</a></td>
+            <td>
+                <form method="post" action="~/Admin/DeleteUser/@user.Id">
+                    <input type="hidden" value="@user.Id" name="BicycleId" />
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

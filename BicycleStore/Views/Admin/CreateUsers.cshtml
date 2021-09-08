@@ -1,0 +1,27 @@
+﻿@model User
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" style="margin-top: 50px;">
+    @Html.HiddenFor(x => x.Id)
+    <div>
+        @Html.LabelFor(x => x.UserName)
+        @Html.TextBoxFor(x => x.UserName)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.PasswordHash)
+        @Html.TextBoxFor(x => x.PasswordHash)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.PhoneNumber)
+        @Html.TextBoxFor(x => x.PhoneNumber)
+    </div>
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>
